@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="livro_receitas" 
+		xmlns:tns="livro_receitas" 
+		elementFormDefault="qualified">
+		
+	<element name="livro_receitas" type="tns:livro_receitas" />
+		
+		<complexType name="livro_receitas">
+			<sequence>
+				<element name="cabeçalho" type="tns:cabeçalho" maxOccurs="1"
+					minOccurs="1"></element>
+				<element name="parte" type="tns:parte" maxOccurs='unbounded'
+					minOccurs="1"></element>
+			</sequence>
+		</complexType>
+		
+		<complexType name="cabeçalho">
+			<sequence>
+				<element name="titulo_do_conjunto_de_receitas" type="string" minOccurs="1" maxOccurs='unbounded'></element>
+				<element name="autores" type="string" minOccurs="1" maxOccurs='unbounded'></element>
+				<element name="data_publicaçao" type="date" minOccurs="1" maxOccurs="1" ></element>
+				<element name="resumo" type="string" minOccurs="0" maxOccurs="1"></element>
+			</sequence>
+		</complexType>
+		
+		
+		<complexType name="parte">
+			<sequence>
+				<element name="titulo" type="string" minOccurs="1" maxOccurs="1"></element>
+				<element name="introduçao" type="string" minOccurs="0" maxOccurs="1"></element>
+				<element name="refer_url" type="tns:refer_url" minOccurs="0" maxOccurs="1"></element>
+				<element name="secçao" type="tns:secçao" minOccurs="0" maxOccurs='unbounded'></element>
+			</sequence>
+			<attribute use="required" name="tipo" type="ID"/>
+		</complexType>
+	
+		
+		<complexType name="secçao">
+			<sequence>
+				<element name="titulo" type="string" minOccurs="1" maxOccurs="1"></element>
+				<element name="introduçao" type="string" minOccurs="0" maxOccurs="1"></element>
+				<element name="refer_url" type="tns:refer_url" minOccurs="0" maxOccurs="1"></element>
+				<element name="sub_secçao" type="tns:sub_secçao" minOccurs="0" maxOccurs='unbounded'></element>
+			</sequence>
+		<attribute use="required" name="tipo" type="ID"/>
+		</complexType>
+		
+		<complexType name="sub_secçao">
+			<sequence>
+				<element name="titulo" type="string" minOccurs="1" maxOccurs="1"></element>
+				<element name="introduçao" type="string" minOccurs="0" maxOccurs="1"></element>
+				<element name="refer_url" type="tns:refer_url" minOccurs="0" maxOccurs="1"></element>
+				<element name="receita" type="tns:receita" minOccurs="1" maxOccurs='unbounded'></element>
+			</sequence>
+		<attribute use="required" name="tipo" type="ID"/>
+		</complexType>
+		
+		<complexType name="receita">
+			<sequence>
+				<element name="lista_ingredientes" type="tns:lista_ingredientes" minOccurs="1" maxOccurs="1"></element>
+				<element name="nome" type="string" minOccurs="1" maxOccurs="1"></element>
+				<element name="tempo" type="string" minOccurs="0" maxOccurs="1"></element>
+				<element name="calorias" type="positiveInteger" minOccurs="0" maxOccurs="1"></element>
+				<element name="refer_url" type="tns:refer_url" minOccurs="0" maxOccurs="1"></element>
+				<element name="descriçao" type="tns:descriçao" minOccurs="1" maxOccurs="1"></element>
+			</sequence>
+			<attribute name="id_receita" type="ID" use="required" />
+			<attribute name="custo" use="optional" >
+				<simpleType>
+					<restriction base="string">
+						<pattern value="barato|médio|caro"/>
+					</restriction>
+				</simpleType>
+			</attribute>
+			<attribute name="dificuldade" use="optional" >
+				<simpleType>
+					<restriction base="string">
+						<pattern value="fácil|médio|difícil"/>
+					</restriction>
+				</simpleType>
+			</attribute>
+			<attribute name="categoria" type="string" use="optional"/>
+		</complexType>
+		
+		<complexType name="lista_ingredientes">
+			<sequence>
+				<element name="ingrediente" type="tns:ingrediente" minOccurs="1" maxOccurs='unbounded'></element>
+			</sequence>
+		</complexType>
+		
+		<complexType name="ingrediente">
+			<sequence>
+				<element name="nome" type="string" minOccurs="1" maxOccurs="1"></element>
+				<element name="quantidade" type="float" minOccurs="0" maxOccurs="1"></element>
+				<element name="unidade" type="string" minOccurs="0" maxOccurs="1"></element>
+			</sequence>
+			<attribute name="id_ingrediente" type="ID" use="required" />
+		</complexType>
+		
+		<complexType name="descriçao">
+			<choice>
+				<element name="lista_passos" type="tns:lista_passos"></element>
+				<element name="texto" type="tns:texto"> </element>
+			</choice>
+		</complexType>	
+		
+		<complexType name="lista_passos">
+			<sequence>
+				<element name="passos" type="tns:passos" minOccurs="1" maxOccurs='unbounded'/> 
+			</sequence>
+		</complexType>
+		
+		<complexType name="passos" mixed="true">
+			<all>
+				<element name="refer_url" type="tns:refer_url" minOccurs="0"/>
+				<element name="refer_ingrediente" type="tns:refer_ingrediente" minOccurs="0"/>
+				<element name="refer_receita" type="tns:refer_receita" minOccurs="0"/>				
+			</all>
+		</complexType>
+		
+		<complexType name="texto" mixed="true">
+			<all>
+				<element name="refer_url" type="tns:refer_url" minOccurs="0"/>
+				<element name="refer_ingrediente" type="tns:refer_ingrediente" minOccurs="0"/>
+				<element name="refer_receita" type="tns:refer_receita" minOccurs="0"/>				
+			</all>
+		</complexType>		
+		
+		<complexType name="refer_url">
+			<attribute 
+				name="url" 
+				type="anyURI"
+				use="required"/>
+		</complexType>
+		
+		<complexType name="refer_ingrediente">
+			<attribute
+				name="ingrediente"
+				type="IDREF"
+				use="required"/>
+		</complexType>
+		
+		<complexType name="refer_receita">
+			<attribute
+				name="receita"
+				type="IDREF"
+				use="required"/>
+		</complexType>
+		
+		
+		
+</schema>
+

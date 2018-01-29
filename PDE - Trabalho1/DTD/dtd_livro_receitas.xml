@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE livro_receitas SYSTEM "livro_receitas.dtd">
+
+<livro_receitas>
+
+	<cabeçalho>
+		<titulo_do_conjunto_de_receitas>Livro de Receitas</titulo_do_conjunto_de_receitas>
+		<autores>Ricardo Santos</autores>
+		<data_publicaçao>22/10/2017</data_publicaçao>
+		<resumo>Receitas rápidas e fáceis de confecionar</resumo>
+	</cabeçalho>
+	
+	<parte tipo="sobremesas">
+		<titulo>Sobremesas</titulo>
+		<introducao>Todo o tipo de sobremesas</introducao>
+		<refer_url url="http://www.google.com/imagemSobremesas"/>
+		
+		<secçao tipo="semi-frios">
+			<titulo>Semi-Frios</titulo>
+			<introducao>Sobremesas frias</introducao>
+			
+			<sub_secçao tipo="bolacha">
+				<titulo>Bolos com bolacha</titulo>
+				<introducao>Sobremesas com bolacha</introducao>
+				
+				<receita id_receita="BoloDeBolacha" dificuldade="médio" custo="médio" categoria="sobremesa" >
+					<lista_ingredientes>
+			
+						<ingrediente id_ingrediente="bolachaMaria">
+							<nome>Bolacha Maria</nome>
+							<quantidade> 3 </quantidade>
+						    <unidade> pacotes </unidade>
+						</ingrediente>
+
+						<ingrediente id_ingrediente="açucar" >
+							<nome>Açucar</nome>
+							<quantidade> 200 </quantidade>
+						    <unidade> gramas </unidade>
+						</ingrediente>
+	
+					</lista_ingredientes>
+		
+					<nome>Bolo bolacha</nome>
+					<tempo>50 minutos</tempo>
+					<calorias>500</calorias>
+
+					<descriçao>
+						<lista_passos>
+							<passos> Triturar a bolacha maria. <refer_ingrediente ingrediente="bolachaMaria"/>  </passos>
+						    <passos> Preparar as natas como podemos ver em: <refer_url url="http://www.google.com/imagemNatas"/> </passos>
+						 </lista_passos>
+					</descriçao>
+				</receita>
+			</sub_secçao>
+		</secçao>	
+		
+		<!--  OUTRA RECEITA -->
+		
+		<secçao tipo="bolos">
+		<titulo>Bolos</titulo>
+		<introducao>Todo o tipo de bolos</introducao>
+		
+			<sub_secçao tipo="iogurte">
+				<titulo>Iogurte</titulo>
+				<introducao>Bolos com iogurte</introducao>
+				
+				<receita id_receita="BoloDeIogurte" dificuldade="médio" custo="barato" categoria="sobremesa">
+					<lista_ingredientes>
+						<ingrediente id_ingrediente="natas" >
+							<nome>Natas</nome>
+							<quantidade> 2 </quantidade>
+						    <unidade> pacotes </unidade>
+						</ingrediente>
+					</lista_ingredientes>
+					
+					<nome>Bolo de iogurte</nome>
+					<tempo>Rápido</tempo>
+					<calorias>400</calorias>
+					
+					<descriçao>	
+						<texto>
+						Utilizar as natas <refer_ingrediente ingrediente="natas"/>. Utilizar a preparção descrita na receita de bolo de bolacha <refer_receita receita="BoloDeBolacha" />.
+						</texto>
+					</descriçao>
+				</receita>
+			</sub_secçao>
+		</secçao>
+	</parte>
+</livro_receitas>
