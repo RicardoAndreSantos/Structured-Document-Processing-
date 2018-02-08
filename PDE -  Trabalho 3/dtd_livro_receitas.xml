@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rdf_livro_receitas.xsl"?>
+<!DOCTYPE livro_receitas SYSTEM "livro_receitas.dtd">
+
+<livro_receitas>
+
+	<cabeçalho>
+		<titulo_do_conjunto_de_receitas>Livro de Receitas</titulo_do_conjunto_de_receitas>
+		<autores>Ricardo Santos</autores>
+		<data_publicaçao>2017/10/22</data_publicaçao>
+		<resumo>Receitas rápidas e fáceis de confecionar</resumo>
+	</cabeçalho>
+	
+	<corpo>
+		<parte tipo="sobremesas">
+			<titulo>Sobremesas</titulo>
+			<introducao>Todo o tipo de sobremesas.</introducao>
+			<!--  <refer_url url="http://www.google.com/imagemSobremesas"/> -->
+			
+			<secçao tipo="semi-frios">
+				<titulo>Semi-Frios</titulo>
+				<introducao>Sobremesas frias.</introducao>
+				
+				<sub_secçao tipo="bolacha">
+					<titulo>Bolos com bolacha</titulo>
+					<introducao>Todo o tipo de sobremesas com bolacha.</introducao>
+					
+					<receita id_receita="BoloDeBolacha" dificuldade="médio" custo="médio" categoria="sobremesa" tempo="50 minutos" >
+						
+						<nome>Bolo de bolacha</nome>
+						<calorias>500</calorias>
+						
+						<lista_ingredientes>
+							<ingrediente id_ingrediente="bolachaMaria">
+								<nome>Bolacha Maria</nome>
+								<quantidade> 3 </quantidade>
+							    <unidade> pacotes </unidade>
+							</ingrediente>
+	
+							<ingrediente id_ingrediente="açucar" >
+								<nome>Açucar</nome>
+								<quantidade> 200 </quantidade>
+							    <unidade> gramas </unidade>
+							</ingrediente>
+		
+						</lista_ingredientes>
+	
+						<refer_url url="bolo_bolacha.jpg" alt="Bolacha"/>
+	
+						<descriçao>
+							<lista_passos>
+								<passo>  Triturar a  <refer_ingrediente ingrediente="bolachaMaria"/> na trituradora.  </passo>
+							    <passo> Preparar as natas até atingir a consistência pretendida.  </passo>
+							    <passo> De seguida, misturar com o <refer_ingrediente ingrediente="açucar"/>. </passo>
+							    <passo> (Apenas para testar a navegação - <refer_receita receita="BoloDeIogurte"/> ) . </passo>
+							 </lista_passos>
+						</descriçao>
+					</receita>
+				</sub_secçao>
+			</secçao>	
+			
+			<!--  OUTRA RECEITA -->
+			
+			<secçao tipo="bolos">
+			<titulo>Bolos</titulo>
+			<introducao>Todo o tipo de bolos.</introducao>
+			
+				<sub_secçao tipo="iogurte">
+					<titulo>Bolos com Iogurte</titulo>
+					<introducao>Bolos utilizando iogurte.</introducao>
+					
+					<receita id_receita="BoloDeIogurte" dificuldade="médio" custo="barato" categoria="sobremesa" tempo="rápido">
+					
+						<nome>Bolo de iogurte</nome>
+						<calorias>400</calorias>
+						
+						<lista_ingredientes>
+							<ingrediente id_ingrediente="natas" >
+								<nome>Natas</nome>
+								<quantidade> 2 </quantidade>
+							    <unidade> pacotes </unidade>
+							</ingrediente>
+						</lista_ingredientes>
+						
+						<refer_url url="bolo_iogurte.jpg" alt="iogurte"/>
+						
+						<descriçao>	
+							<texto>
+								Colocar as  <refer_ingrediente ingrediente="natas"/> dentro de um recipiente. De seguida, deve de ser usada a preparação descrita na receita de <refer_receita receita="BoloDeBolacha" /> .
+							</texto>
+						</descriçao>
+					</receita>
+				</sub_secçao>
+			</secçao>
+		</parte>
+		
+	</corpo>
+</livro_receitas>
